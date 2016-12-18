@@ -53,6 +53,8 @@ namespace ClientIpAspNetCore
 
                 LogManager.ReconfigExistingLoggers();
             }
+
+            app.UseMiddleware<AdminWhiteListMiddleware>(Configuration["AdminWhiteList"]);
             app.UseMvc();
         }
     }
