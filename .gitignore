@@ -3,3 +3,4 @@ src/ClientIpAspNetCore/obj
 Logs
 src/ClientIpAspNetCore/ClientIpAspNetCore.xproj.user
 src/ClientIpAspNetCore/project.lock.json
+src/ClientIpAspNetCore/Properties/PublishProfiles
