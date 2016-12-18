@@ -1,0 +1,5 @@
+src/ClientIpAspNetCore/bin
+src/ClientIpAspNetCore/obj
+Logs
+src/ClientIpAspNetCore/ClientIpAspNetCore.xproj.user
+src/ClientIpAspNetCore/project.lock.json
