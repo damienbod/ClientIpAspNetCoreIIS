@@ -17,15 +17,17 @@ namespace ClientIpAspNetCore.Filters
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            foreach (var item in context.HttpContext.Request.Headers.Keys)
-            {
-                _logger.LogInformation($"Header key: {item}");
-            }
+            _logger.LogInformation($"Remote IpAddress: {context.HttpContext.Connection.RemoteIpAddress}");
 
-            foreach (var item in context.HttpContext.Request.Headers.Values)
-            {
-                _logger.LogInformation($"Header value: {item}");
-            }
+            //foreach (var item in context.HttpContext.Request.Headers.Keys)
+            //{
+            //    _logger.LogInformation($"Header key: {item}");
+            //}
+
+            //foreach (var item in context.HttpContext.Request.Headers.Values)
+            //{
+            //    _logger.LogInformation($"Header value: {item}");
+            //}
 
             base.OnActionExecuting(context);
         }
