@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4F35F415-8CFC-4D67-9017-492AF00F47BE}"
 EndProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ClientIpAspNetCore", "src\ClientIpAspNetCore\ClientIpAspNetCore.xproj", "{56AB6CCF-1B8D-4859-A789-DE717470689E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientIpAspNetCore", "src\ClientIpAspNetCore\ClientIpAspNetCore.csproj", "{56AB6CCF-1B8D-4859-A789-DE717470689E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{56AB6CCF-1B8D-4859-A789-DE717470689E} = {4F35F415-8CFC-4D67-9017-492AF00F47BE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C40E73D2-437F-4D14-B0BF-682C6EB678B9}
 	EndGlobalSection
 EndGlobal
