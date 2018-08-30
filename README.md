@@ -4,7 +4,7 @@ https://damienbod.com/2016/12/18/implementing-a-client-white-list-using-asp-net-
 
 ## History
 
-Added support for IP6
+2018-08-30 Added support for IP6
 
 ## Links
 
