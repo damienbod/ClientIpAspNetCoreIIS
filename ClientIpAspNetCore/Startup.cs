@@ -40,7 +40,7 @@ namespace ClientIpAspNetCore
 
             app.UseStaticFiles();
 
-            app.UseMiddleware<AdminWhiteListMiddleware>(Configuration["AdminWhiteList"]);
+            app.UseMiddleware<AdminSafeListMiddleware>(Configuration["AdminSafeList"]);
             app.UseMvc();
         }
     }
