@@ -40,21 +40,6 @@ namespace ClientIpAspNetCore
 
             app.UseStaticFiles();
 
-            //var configDir = "C:\\git\\ClientIpAspNetCore\\Logs";
-            var configDir = "C:\\inetpub\\wwwroot\\clientidaspnetcore\\Logs";
-
-            if (configDir != string.Empty)
-            {
-                var logEventInfo = NLog.LogEventInfo.CreateNullEvent();
-                foreach (FileTarget target in LogManager.Configuration.AllTargets.Where(t => t is FileTarget))
-                {
-                    var filename = target.FileName.Render(logEventInfo).Replace("'", "");
-                    target.FileName = Path.Combine(configDir, filename);
-                }
-
-                LogManager.ReconfigExistingLoggers();
-            }
-
             app.UseMiddleware<AdminWhiteListMiddleware>(Configuration["AdminWhiteList"]);
             app.UseMvc();
         }
