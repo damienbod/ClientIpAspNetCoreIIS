@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4F35F415-8CFC-4D67-9017-492AF00F47BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientIpAspNetCore", "src\ClientIpAspNetCore\ClientIpAspNetCore.csproj", "{56AB6CCF-1B8D-4859-A789-DE717470689E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientIpAspNetCore", "ClientIpAspNetCore\ClientIpAspNetCore.csproj", "{56AB6CCF-1B8D-4859-A789-DE717470689E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9CBAA17-0114-480B-8DFD-03CCB0B60CA9}"
 	ProjectSection(SolutionItems) = preProject
