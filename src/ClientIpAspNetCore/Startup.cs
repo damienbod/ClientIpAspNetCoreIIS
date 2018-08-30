@@ -3,6 +3,7 @@ using System.Linq;
 using ClientIpAspNetCore.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -30,7 +31,7 @@ namespace ClientIpAspNetCore
         {
             services.AddScoped<ClientIdCheckFilter>();
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -38,21 +39,6 @@ namespace ClientIpAspNetCore
             loggerFactory.AddNLog();
 
             app.UseStaticFiles();
-
-            //var configDir = "C:\\git\\ClientIpAspNetCore\\Logs";
-            var configDir = "C:\\inetpub\\wwwroot\\clientidaspnetcore\\Logs";
-
-            if (configDir != string.Empty)
-            {
-                var logEventInfo = NLog.LogEventInfo.CreateNullEvent();
-                foreach (FileTarget target in LogManager.Configuration.AllTargets.Where(t => t is FileTarget))
-                {
-                    var filename = target.FileName.Render(logEventInfo).Replace("'", "");
-                    target.FileName = Path.Combine(configDir, filename);
-                }
-
-                LogManager.ReconfigExistingLoggers();
-            }
 
             app.UseMiddleware<AdminWhiteListMiddleware>(Configuration["AdminWhiteList"]);
             app.UseMvc();
