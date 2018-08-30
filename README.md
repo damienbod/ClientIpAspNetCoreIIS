@@ -9,3 +9,11 @@ https://localhost:44315/api/values
     "valbbbue1",
     "value2"
 ]
+
+## Links
+
+https://docs.microsoft.com/en-us/dotnet/framework/network-programming/ipv6-addressing
+
+https://docs.microsoft.com/en-us/dotnet/framework/network-programming/internet-protocol-version-6
+
+https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-3.0/ms180981(v=vs.85)
