@@ -24,24 +24,26 @@ namespace ClientIpAspNetCore
 
         public async Task Invoke(HttpContext context)
         {
-            //if (context.Request.Method != "GET")
+            if (context.Request.Method != "GET")
             {
                 var remoteIp = context.Connection.RemoteIpAddress;
                 _logger.LogInformation($"Request from Remote IP address: {remoteIp}");
 
                 string[] ip = _adminWhiteList.Split(';');
 
-                // Returns InterNetwork for IPv4 or InterNetworkV6 for IPv6.
-                // IP6 
-                if (remoteIp.AddressFamily.ToString() == ProtocolFamily.InterNetworkV6.ToString())
+                var bytes = remoteIp.GetAddressBytes();
+                var badIp = true;
+                foreach (var address in ip)
                 {
-                    _logger.LogInformation($"IP6");
-
-                    Byte[] bytes = remoteIp.GetAddressBytes();
-                    
+                    var testIp = IPAddress.Parse(address);
+                    if(testIp.GetAddressBytes().SequenceEqual(bytes))
+                    {
+                        badIp = false;
+                        break;
+                    }
                 }
-                // IP4
-                else if (!ip.Any(option => option == remoteIp.ToString()))
+
+                if(badIp)
                 {
                     _logger.LogInformation($"Forbidden Request from Remote IP address: {remoteIp}");
                     context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
