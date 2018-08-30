@@ -1,7 +1,7 @@
-src/ClientIpAspNetCore/bin
-src/ClientIpAspNetCore/obj
+ClientIpAspNetCore/bin
+ClientIpAspNetCore/obj
 Logs
-src/ClientIpAspNetCore/ClientIpAspNetCore.xproj.user
-src/ClientIpAspNetCore/project.lock.json
-src/ClientIpAspNetCore/Properties/PublishProfiles
+ClientIpAspNetCore/ClientIpAspNetCore.xproj.user
+ClientIpAspNetCore/project.lock.json
+ClientIpAspNetCore/Properties/PublishProfiles
 .vs
