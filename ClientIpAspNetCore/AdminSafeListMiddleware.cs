@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace ClientIpAspNetCore
 {
-    public class AdminWhiteListMiddleware
+    public class AdminSafeListMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger<AdminWhiteListMiddleware> _logger;
-        private readonly string _adminWhiteList;
+        private readonly ILogger<AdminSafeListMiddleware> _logger;
+        private readonly string _adminSafeList;
 
-        public AdminWhiteListMiddleware(RequestDelegate next, ILogger<AdminWhiteListMiddleware> logger, string adminWhiteList)
+        public AdminSafeListMiddleware(RequestDelegate next, ILogger<AdminSafeListMiddleware> logger, string adminWhiteList)
         {
-            _adminWhiteList = adminWhiteList;
+            _adminSafeList = adminWhiteList;
             _next = next;
             _logger = logger;
         }
@@ -29,7 +27,7 @@ namespace ClientIpAspNetCore
                 var remoteIp = context.Connection.RemoteIpAddress;
                 _logger.LogDebug($"Request from Remote IP address: {remoteIp}");
 
-                string[] ip = _adminWhiteList.Split(';');
+                string[] ip = _adminSafeList.Split(';');
 
                 var bytes = remoteIp.GetAddressBytes();
                 var badIp = true;
