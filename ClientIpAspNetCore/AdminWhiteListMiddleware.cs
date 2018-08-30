@@ -27,7 +27,7 @@ namespace ClientIpAspNetCore
             if (context.Request.Method != "GET")
             {
                 var remoteIp = context.Connection.RemoteIpAddress;
-                _logger.LogInformation($"Request from Remote IP address: {remoteIp}");
+                _logger.LogDebug($"Request from Remote IP address: {remoteIp}");
 
                 string[] ip = _adminWhiteList.Split(';');
 
