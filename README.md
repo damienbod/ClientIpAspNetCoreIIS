@@ -4,6 +4,8 @@ https://damienbod.com/2016/12/18/implementing-a-client-white-list-using-asp-net-
 
 ## History
 
+2020-03-09 Update .NET Core 3.1
+
 2018-08-30 Added support for IP6
 
 ## Links
