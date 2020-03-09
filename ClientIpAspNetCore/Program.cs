@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
 using Microsoft.AspNetCore.Hosting;
-using System;
-using NLog.Web;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace ClientIpAspNetCore
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -14,12 +14,12 @@ namespace ClientIpAspNetCore
             try
             {
                 logger.Debug("init main");
-                BuildWebHost(args).Run();
+                CreateHostBuilder(args).Build().Run();
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 //NLog: catch setup errors
-                logger.Error(ex, "Stopped program because of exception");
+                logger.Error(exception, "Stopped program because of exception");
                 throw;
             }
             finally
@@ -29,15 +29,17 @@ namespace ClientIpAspNetCore
             }
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .UseStartup<Startup>()
-                    .ConfigureLogging(logging =>
-                    {
-                        logging.ClearProviders();
-                        logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                    })
-                    .UseNLog()  // NLog: setup NLog for Dependency injection
-                    .Build();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+          Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            })
+            .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+            })
+            .UseNLog();  // NLog: Setup NLog for Dependency injection
     }
 }
